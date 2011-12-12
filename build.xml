@@ -142,6 +142,20 @@
             <classpath refid="master-classpath"/>
         </javac>
     </target>
+   <target name="clean" description="Clean output directories">
+      <delete>
+         <fileset dir="${build.dir}">
+               <include name="**/*.class"/>
+            </fileset>
+         </delete>
+   </target>
+   <target name="undeploy" description="Un-Deploy application">
+      <delete>
+         <fileset dir="${deploy.path}/${name}">
+            <include name="**/*.*"/>
+         </fileset>
+      </delete>
+   </target>
 
     <target name="tests" depends="build, buildtests" description="Run tests">
         <junit printsummary="on"
